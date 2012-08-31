@@ -1,13 +1,130 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block meta %}
+            <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+            <meta name="Description"
+                  content="Présentation du club de plongée Neptune situé à Angers (Maine et Loire 49). De ses prestations en loisir pour la plongée sous marine. Dont l'intituléest : club de plongée Neptune Vaillante Sport. Plongée assurée tous les dimanches." />
+            <meta name="Keywords"
+                  content="club angers neptune vaillante sport maine et loire plongée sous marine" />
+            <meta name="Content-language" content="Fr" />
+        {% endblock %}
+            <title>{% block title %}Neptune Plongée{% endblock %}</title>
+
+            <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/bootstrap.min.css') }}"/>
+            <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/bootstrap-responsive.min.css') }}"/>
+            <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/general.css') }}"/>
+            
         {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
+            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            <script type="text/javascript" src="{{ asset('bundles/neptunevsmain/js/bootstrap.js') }}"></script>
         {% block javascripts %}{% endblock %}
-    </body>
-</html>
+        </head>
+        <body>
+            <div id="global" class=".ui-corner-all">
+                <div id="header">
+                    <div id="imgTtHG">
+                        <span class="titreSite"><a href="{{ path('NeptuneVsMainBundle_homepage') }}" ><img src="{{ asset('bundles/neptunevsmain/images/imgSite/logo7.png') }}" alt="logo" title="Accueil Neptune" /></a></span>
+                        <div id="imgTtLogo"></div>
+                    </div>
+                    <div id="imgTtHM"></div>
+                    <div id="imgTtHD">
+                        <span class="titreHeure">{{ "now" | date("H\:i") }}</span>
+                        <span class="titreDate">{{ "now" |date('d/m/Y') }}</span>
+                    </div>
+                    <div id="imgTtBG"></div>
+                    <div id="imgTtBM"></div>
+                    <div id="imgTtBD"></div>
+                </div>
+                <div id="ContBarHaut">
+                    <div id="imgBarG"></div>
+                    <div id="imgBarM"></div>
+                    <div id="imgBarD">
+                        {% if is_granted('ROLE_USER') %}
+                            <div class="contMenuHeaderDroit">
+                                <div class="contUserNameMenu">
+                                    <span>Bonjour {{ app.user.getUsername() }} !</span>
+                                </div>
+                                <div class="contLogOutMenu">
+                                    <a href="{{ path('fos_user_security_logout') }}">
+                                        <img src="{{ asset('bundles/neptunevsmain/images/imgSite/deco.png') }}" title="Cliquez ici pour vous déconnecter" alt="deco" />
+                                    </a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <form id="loginformmenu" class="form-inline" action="{{ path('fos_user_security_check') }}" method="post">
+                                <input type="hidden" name="_csrf_token" value="{% render('NeptuneVsMainBundle:Default:getToken') %}" />
+                                <div class="contLoginMenu">
+                                    Login: <input id="username" class="span1" name="_username" value="" type="text" size="11" maxlength="25" />
+                                    Pass: <input id="password" class="span1" name="_password" type="password" size="11" maxlength="25" value="" />
+                                    <button  class="btn btn-mini" type="submit" name="verifer">Ok</button>
+                                </div>
+                            </form>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div id="center">
+                        <div id="sidebar">
+                            <ul class="nav nav-list"> 
+                        {% if is_granted('ROLE_USER') %}
+                                    <li class="nav-header titremenu">Membres</li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Les News</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Album Photos</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Les Documents</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Inscription Plongée</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Résultats Sondages</a></li>
+                        {% endif %}
+                                    <li class="nav-header titremenu">Le Club</li>
+                                    <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}"><i class="icon-chevron-right icon-white"></i>Accueil</a></li>
+                                    <li><a href="{{ path('NeptuneVsMainBundle_ClubHistory') }}"><i class="icon-chevron-right icon-white"></i>Histoire du Club</a></li>
+                                    <li><a href="{{ path('NeptuneVsMainBundle_Formation') }}"><i class="icon-chevron-right icon-white"></i>Formations</a></li>
+                                    <li><a href="{{ path('NeptuneVsMainBundle_SitePlongee') }}"><i class="icon-chevron-right icon-white"></i>Carrières et Piscine</a></li>
+                                    <li><a href="{{ path('NeptuneVsMainBundle_Tarif') }}"><i class="icon-chevron-right icon-white"></i>Tarifs</a></li>
+                                    <li class="nav-header titremenu">Autres</li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Liens</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Occasions</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Contacts</a></li>
+                                    <li><a href="#"><i class="icon-chevron-right icon-white"></i>Support</a></li>
+                        {% if is_granted('ROLE_USER') %}
+                                    <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-chevron-right icon-white"></i>Deconnexion</a></li>
+                        {% else %}
+                                    <li><a href="{{ path('fos_user_security_login') }}"><i class="icon-chevron-right icon-white"></i>Connexion</a></li>
+                        {% endif %}
+                                </ul>
+                            </div>
+                            <div id="content">
+                    {% block content %}{% endblock %}
+                                </div>
+                            </div>
+                            <div id="footer">
+                                <div id="imgPdHG"></div>
+                                <div id="imgPdHD">
+                                    <div class="LienBas1">
+                                        <span class="CopyBull">•</span>
+                                        <a class="Lien2" href="{{ path('NeptuneVsMainBundle_ClubHistory') }}">Qui sommes nous ?</a>
+                                        <span class="CopyBull">•</span>
+                                        <a class="Lien2" href="">Support</a>
+                                        <span class="CopyBull">•</span>
+                                        <a class="Lien2" href="">Contacts</a>
+                                    </div>
+                                </div>
+                                <div id="imgPdBG">
+                                    <div class="LienBas2">
+                                        <a class="Lien" href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a>
+                                        <span class="LienBarre">|</span>
+                                        <a class="Lien2" href="{{ path('fos_user_security_login') }}">Login</a>
+                                    </div>
+                                </div>
+                                <div id="imgPdBD">
+                                    <span class="Copy">&copy; {{ "now" | date("Y") }}</span>
+                                    <span class="CopyTitre">Neptune Vaillante Sports</span>
+                                    <span class="LienBarre">|</span>
+                                    <span class="Copy">Tous Droits Réservés</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </body>
+                </html>

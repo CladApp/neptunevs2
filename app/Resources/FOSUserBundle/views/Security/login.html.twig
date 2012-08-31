@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+<div  style="padding: 20px;">
+    {% if error %}
+        <div class="alert alert-error" style="text-align: center;">{{ error }}</div>
+    {% endif %}
+    <div style="width: 260px;margin: 0 auto;">
+        <form class="well" action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" id="password" name="_password" /><br/>
+
+            <input style="float: left;margin-right: 3px;" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="checkbox">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+            <button style="float: right;" class="btn-success" id="_submit" name="_submit" type="submit">Envoyer</button>
+            <div style="clear: both;" ></div>
+        </form>
+    </div>
+</div>
+{% endblock %}

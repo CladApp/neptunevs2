@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    {{ parent() }} - Les Tarif
+{% endblock %}
+
+{% block stylesheets %}{{ parent() }}
+<link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/tarif.css') }}"/>
+{% endblock %}
+
+{% block content %}
+<div  style="padding: 20px;">
+    <div class="contTarif">
+        <div class="contTitreTarif">
+            <div class="contImgTarif">
+                <img src="{{ asset("bundles/neptunevsmain/images/tarif/tarif_1.png") }}" alt="neptune plongée" /> 
+            </div>
+            <div class="titreTarif">La cotisation</div>
+        </div><br/>
+        <div class="contTextTarif">
+            <p class="contTarifP">
+                      euros pour <b>la saison</b> du  . La cotisation comprend la licence fédérale et la cotisation au club (participation à la piscine incluse).
+                </p>
+                <p>
+                    Pour <b>les mineurs</b>, le prix est de   euros.
+                </p>
+                <p>
+                    Dans le cas d'<b>adhésions multiples</b> (plusieurs personnes à la même adresse) :
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;1er adhérent  =  100% <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2ème adhérent = 80% (soit réduction de 20%)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;3ème adhérent = 70% (soit réduction de 30%)
+                </p><br />
+                <p>
+                    La réduction s’applique uniquement sur l’adhésion, la licence étant incompressible.<br/>
+                    Ce règlement ne comprend pas le paiement des sorties en milieu naturel : carrières et mers.
+                </p><br /><br />
+            </div>
+            <div class="contTitreTarif">
+                <div class="contImgTarif">
+                    <img src="{{ asset("bundles/neptunevsmain/images/tarif/tarif2.png") }}" alt="neptune plongée" /> 
+                </div>
+                <div class="titreTarif">Les carrières</div>
+            </div><br/>
+            <div class="contTextTarif">
+                <p class="contTarifP">
+                    Forfait carrière Fresnais :   € /ans.<br/> 
+                    Bécon les Granits :   € la plongée.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

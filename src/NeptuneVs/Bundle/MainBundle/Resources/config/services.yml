@@ -1,0 +1,7 @@
+parameters:
+#    neptune_vs_main.example.class: NeptuneVs\Bundle\MainBundle\Example
+
+services:
+#    neptune_vs_main.example:
+#        class: %neptune_vs_main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

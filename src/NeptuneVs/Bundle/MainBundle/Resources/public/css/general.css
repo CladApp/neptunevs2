@@ -1,0 +1,303 @@
+/* Feuille de Style Css
+/********************************/
+
+/*Option Graphique General*/
+html {
+    height: 100%;
+    margin: 0;
+}
+body{
+    background-color:#CDD7E3;
+    font-family:Tahoma, Geneva, sans-serif;
+    font-size:12px;
+    color:#000;
+    margin: 0;
+    height: 100%;
+}
+.loading {
+    width: 16px;
+    height: 11px;
+    background-image: url(../images/ajax-loader.gif);
+}
+a img{
+    border:none;
+}
+.clearfloat{
+    clear:both;
+    visibility:hidden;
+}
+.floatleft{
+    float: left;
+}
+.floatright{
+    float: right;
+}
+.retourReponse{
+    padding:20px;
+    font-weight:bold;
+    text-align:center;
+}
+
+/*Option Posionnement et couleur texte General */
+div#global {
+    min-height: 100%;
+    width: 950px;
+    border: 2px solid #bcc8cf;
+    margin: 0 auto;
+    position: relative;
+    background: url(../images/imgSite/global.png) center repeat-y;
+}
+
+/*Option de l'entete*/
+div#header {
+    color: #fff;
+    height: 206px;
+}
+div#header h1 {
+    margin: 0;
+}
+.titreHeure {
+    font-size: 11px;
+    color: #000;
+    font-weight: bold;
+    position: relative;   
+    left: 45px;
+}
+.titreDate {
+    font-size: 11px;
+    color: #000;
+    font-weight: bold;
+    position: relative;
+    left: 68px;
+}
+.titreFete {
+    font-size: 11px;
+    color: #000;
+    left: 45px;
+    font-weight: bold;
+    position: relative;
+    top: 13px;
+}
+.titreSite {
+    padding-left: 0px;
+}
+#imgTtLogo{
+    background-image: url(../images/imgSite/logo6.png);
+    height: 58px;
+    width: 56px;
+    position: absolute;
+    left: 125px;
+    top: 3px;
+}
+#imgTtHG{
+    background-image: url(../images/imgSite/01.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 65px;
+    width: 188px;
+}
+#imgTtHM{
+    background-image: url(../images/imgSite/02.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 65px;
+    width: 476px;
+}
+#imgTtHD{
+    background-image: url(../images/imgSite/03.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 65px;
+    width: 286px;
+}
+#imgTtBG{
+    background-image: url(../images/imgSite/04.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 141px;
+    width: 188px;
+}
+#imgTtBM{
+    background-image: url(../images/imgSite/05.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 141px;
+    width: 476px;
+}
+#imgTtBD{
+    background-image: url(../images/imgSite/06.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 141px;
+    width: 286px;
+}
+
+/* option des menu gauche et droite */
+div#ContBarHaut{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    height: 51px;
+    width: 950px;
+    margin: 0px;
+}
+#imgBarG{
+    background-image: url(../images/imgSite/07.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 51px;
+    width: 188px;
+}
+#imgBarM{
+    background-image: url(../images/imgSite/08.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 51px;
+    width: 476px;
+}
+#imgBarD{
+    background-image: url(../images/imgSite/09.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 51px;
+    width: 286px;
+}
+
+/*Option du Corp*/
+div#center {
+    /* Pour éviter la superposition
+    du pied de page et du contenu : */
+    padding-bottom: 90px;
+    overflow: auto;
+    width: 950px;
+}
+div#sidebar h3, div#footer p, div#sidebar p  {
+    padding: 0 10px;
+}
+
+div#sidebar {
+    float: left;
+    width: 165px;
+    margin: 10px 10px 0 10px;
+}
+div#content {
+    float: right;
+    width: 765px;
+}
+
+/*Option du Pied de page*/
+.LienBas1{
+    margin: 20px 0 0 40px;
+}
+.LienBas2{
+    margin-top: 13px;
+    text-align: center;
+}
+.CopyBull {
+    color: #4d5764;
+    font-size: 10px;
+}
+.Lien, .Lien2 {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+    padding-right: 15px;
+}
+.Lien2 {
+    padding-left: 15px;
+}
+.LienBarre {
+    font-size: 8px;
+    color: #DD0000;
+}
+.Copy {
+    color: #4d5764;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+.CopyTitre {
+    color: #f35e18;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+div#footer {
+    position: absolute;
+    width: 950px;
+    height: 82px;
+    bottom: 0;
+}
+#imgPdHG{
+    background-image: url(../images/imgSite/13.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 47px;
+    width: 188px;
+}
+#imgPdHD{
+    background-image: url(../images/imgSite/14.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 47px;
+    width: 762px;
+    vertical-align: middle;
+}
+#imgPdBG{
+    background-image: url(../images/imgSite/15.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 35px;
+    width: 188px;
+}
+#imgPdBD{
+    background-image: url(../images/imgSite/16.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height: 25px;
+    width: 762px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.titremenu{
+    font-size: 14px;
+}
+
+
+/* Menu header droit*/
+.contMenuHeaderDroit{
+    width:233px; 
+    height:29px;
+    padding-top:13px;
+    padding-left:50px;
+    font-weight: bold;
+    font-size:12px;
+}
+.contUserNameMenu{
+    float:left;
+    padding-top:2px;
+    width:190px;
+    text-align:center;
+}
+.contLogOutMenu{
+    height:29px;
+    width:29px;
+    float:right;
+    padding-left:10px;
+}
+.contLoginMenu{
+    width:240px; 
+    height:30px;
+    float:right;
+    padding-top:15px;
+    font-weight: bold;
+    font-size:10px;
+}
+#loginformmenu input{
+    font-size:9px;
+    font-family: Tahoma, Geneva, sans-serif; 
+    height: 11px;
+}

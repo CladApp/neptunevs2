@@ -1,0 +1,19 @@
+NeptuneVsMainBundle_homepage:
+    pattern:  /
+    defaults: { _controller: NeptuneVsMainBundle:Default:index }
+    
+NeptuneVsMainBundle_Tarif:
+    pattern:  /tarif
+    defaults: { _controller: NeptuneVsMainBundle:Default:tarif }
+    
+NeptuneVsMainBundle_Formation:
+    pattern:  /formation
+    defaults: { _controller: NeptuneVsMainBundle:Default:formation }
+    
+NeptuneVsMainBundle_SitePlongee:
+    pattern:  /siteplongee
+    defaults: { _controller: NeptuneVsMainBundle:Default:siteplongee }
+    
+NeptuneVsMainBundle_ClubHistory:
+    pattern:  /histoire
+    defaults: { _controller: NeptuneVsMainBundle:Default:history }

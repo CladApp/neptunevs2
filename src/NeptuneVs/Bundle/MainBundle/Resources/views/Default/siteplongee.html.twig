@@ -1,0 +1,67 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Les formations
+{% endblock %}
+    
+{% block stylesheets %}
+    {{ parent() }}
+    <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/siteplongee.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <div  style="padding: 20px;">
+        <div class="contSitePlonge">
+            <div>
+                <div class="contTitresitePlonge">
+                    <div class="contImgTitre">
+                        <img src="{{ asset("bundles/neptunevsmain/images/siteplonge/img1.png") }}" alt="img" />
+                    </div>
+                    <div class="titreSitePlonge">Les carrières</div>
+                </div><br />
+                <p>
+                    Le 1er dimanche de chaque mois, les plongées sont réservées aux autonomes
+                    et se déroulent à Bécon les Granits. Nous y retournons le 3ème dimanche du mois
+                    avec les personnes le souhaitant, autonomes ou non.<br/>
+                    Le 2ème et le 4ème dimanche nous allons à la carrière des Fresnaies.
+                </p>
+            </div>
+            <div class="contImgSitePlongee">               
+                <div class="contImgSite1">
+                    <a class="colorbox" href="{{ asset("bundles/neptunevsmain/images/siteplonge/paque1024.jpg") }}" title="Bécon les Ganits">
+                        <img src="{{ asset("bundles/neptunevsmain/images/siteplonge/paques.jpg") }}" alt="site" />
+                        <span>Bécon les Ganits</span>
+                    </a>
+                </div>
+                <div class="contImgSite2">
+                    <a class="colorbox" href="{{ asset("bundles/neptunevsmain/images/siteplonge/fresnais1024.jpg") }}"title="Trélazé - Les Fresnaies">
+                        <img src="{{ asset("bundles/neptunevsmain/images/siteplonge/fresnais.jpg") }}" alt="site2" />
+                        <span>Trélazé - Les Fresnaies</span>
+                    </a>
+                </div>
+                <hr class="clearfloat" />          
+            </div><br/>
+            <div>
+                <div class="contTitresitePlonge">
+                    <div class="contImgTitre">
+                        <img src="{{ asset("bundles/neptunevsmain/images/siteplonge/img2.png") }}" alt="site3" />
+                    </div>
+                    <div class="titreSitePlonge">La piscine</div>
+                </div>
+                <p>
+                    Pour nous entraîner régulièrement, nous nous rendons tous les mercredis soirs à partir de 20h00
+                    jusqu'à 22h00 à la piscine Jean Bouin (Angers).<br/>Nous effectuons nos activités dans un bassin de
+                    50 mètres avec une profondeur allant de 1,80m à 4,15m.
+                </p>
+            </div>  
+            <div class="contImgCentreSite">
+                <div class="contImgSite3">
+                    <a class="colorbox" href="{{ asset("bundles/neptunevsmain/images/siteplonge/piscine1024.jpg") }}" title="La piscine Jean Bouin">
+                        <img src="{{ asset("bundles/neptunevsmain/images/siteplonge/piscine.jpg") }}" alt="neptune plongée" />
+                        <span>La piscine Jean Bouin</span>
+                    </a>
+                </div>
+            </div>                
+        </div>
+    </div>
+{% endblock %}
