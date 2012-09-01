@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Les formations
+    {{ parent() }} - Les carrières et la piscine
 {% endblock %}
     
 {% block stylesheets %}
@@ -10,7 +10,11 @@
 {% endblock %}
 
 {% block content %}
-    <div  style="padding: 20px;">
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Les carrières et la piscine</li>
+    </ul>
+    <div style="padding: 20px;">
         <div class="contSitePlonge">
             <div>
                 <div class="contTitresitePlonge">

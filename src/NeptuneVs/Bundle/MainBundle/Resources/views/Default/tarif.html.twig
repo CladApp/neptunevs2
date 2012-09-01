@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 {% block title %}
-    {{ parent() }} - Les Tarif
+    {{ parent() }} - Les Tarifs
 {% endblock %}
 
 {% block stylesheets %}{{ parent() }}
@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Les Tarifs</li>
+    </ul>
 <div  style="padding: 20px;">
     <div class="contTarif">
         <div class="contTitreTarif">
@@ -18,10 +22,10 @@
         </div><br/>
         <div class="contTextTarif">
             <p class="contTarifP">
-                      euros pour <b>la saison</b> du  . La cotisation comprend la licence fédérale et la cotisation au club (participation à la piscine incluse).
+                    {{ params.cotisation }} euros pour <b>la saison</b> du {{ params.d_saison }}. La cotisation comprend la licence fédérale et la cotisation au club (participation à la piscine incluse).
                 </p>
                 <p>
-                    Pour <b>les mineurs</b>, le prix est de   euros.
+                    Pour <b>les mineurs</b>, le prix est de {{ params.c_mineur }} euros.
                 </p>
                 <p>
                     Dans le cas d'<b>adhésions multiples</b> (plusieurs personnes à la même adresse) :
@@ -44,8 +48,8 @@
             </div><br/>
             <div class="contTextTarif">
                 <p class="contTarifP">
-                    Forfait carrière Fresnais :   € /ans.<br/> 
-                    Bécon les Granits :   € la plongée.
+                    Forfait carrière Fresnais : {{ params.t_fresnais }} € /ans.<br/> 
+                    Bécon les Granits : {{ params.t_becon }} € la plongée.
                 </p>
             </div>
         </div>

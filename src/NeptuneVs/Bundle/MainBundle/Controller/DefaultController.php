@@ -16,11 +16,16 @@ class DefaultController extends Controller {
     }
 
     public function historyAction() {
-        return $this->render('NeptuneVsMainBundle:Default:history.html.twig');
+        $params = $this->get('param')->getParams(array("saison", "nbmembres"));
+        return $this->render('NeptuneVsMainBundle:Default:history.html.twig'
+                        , array('params' => $params));
     }
 
     public function tarifAction() {
-        return $this->render('NeptuneVsMainBundle:Default:tarif.html.twig');
+        $params = $this->get('param')->getParams(array("d_saison", "cotisation", "c_mineur", "t_fresnais", "t_becon"));
+        return $this->render('NeptuneVsMainBundle:Default:tarif.html.twig', array(
+                    'params' => $params
+                ));
     }
 
     public function formationAction() {

@@ -8,29 +8,32 @@
     <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/histoireclub.css') }}"/>
 {% endblock %}
 {% block content %}
-        <div  style="padding: 20px;">
-            <div class="contHistclub">
-            <div class="contHist1">
-                 <img class="imgHistoire1" src="{{ asset("bundles/neptunevsmain/images/histclub/newshistorique.jpg") }}"  /><br /><br />
-                <p>
-                    Neptune Vaillante-Sports a été créé en 1990 par 10 plongeurs.
-                    C'est une section de la <a href="http://lavaillante.angers.free.fr/">Vaillante Sports d'Angers</a>
-                    , club omnisports créé en 1906. Il n'y a que des bénévoles.<br /><br />
-                </p>
-                <p>
-                    Nous sommes  pour cette année .
-                </p>
-            </div>
-            <div class="contHist2">
-                <p>
-                    Le <a href="http://www.codep49-ffessm.com/">comité départemental</a> répertorie tous les clubs de plongées
-                    du département et propose des formations et informations au niveau des clubs.<br />
-                </p>
-                <p>
-                    Il est le représentant de la <a href="http://www.codep49-ffessm.com/">Fédération Française d'Etudes et de Sports Sous Marins.</a>
-                </p>
-                <img class="imgHistoire2" src="{{ asset("bundles/neptunevsmain/images/histclub/logofede1.jpg") }}" alt="neptune plongée" />
-            </div>
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Histoire du Club</li>
+    </ul>
+    <div  style="padding: 20px;">
+        <div class="contHistclub">
+        <div class="contHist1">
+             <img class="imgHistoire1" src="{{ asset("bundles/neptunevsmain/images/histclub/newshistorique.jpg") }}"  /><br /><br />
+            <p>
+                Neptune Vaillante-Sports a été créé en 1990 par 10 plongeurs.
+                C'est une section de la <a href="http://lavaillante.angers.free.fr/">Vaillante Sports d'Angers</a>
+                , club omnisports créé en 1906. Il n'y a que des bénévoles.<br /><br />
+            </p>
+            <p>
+                Nous sommes {{ params.nbmembres }} pour cette année {{ params.saison }}.
+            </p>
         </div>
-
+        <div class="contHist2">
+            <p>
+                Le <a href="http://www.codep49-ffessm.com/">comité départemental</a> répertorie tous les clubs de plongées
+                du département et propose des formations et informations au niveau des clubs.<br />
+            </p>
+            <p>
+                Il est le représentant de la <a href="http://www.codep49-ffessm.com/">Fédération Française d'Etudes et de Sports Sous Marins.</a>
+            </p>
+            <img class="imgHistoire2" src="{{ asset("bundles/neptunevsmain/images/histclub/logofede1.jpg") }}" alt="neptune plongée" />
+        </div>
+    </div>
 {% endblock %}

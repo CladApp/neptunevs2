@@ -1,0 +1,66 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Création d'un compte
+{% endblock %}
+
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+    <li class="active">Créer mon compte</li>
+</ul>
+<div class="well" style="margin: 20px;">
+    <div style="text-align:justify;font-weight:bold;padding:20px;">
+        <span style="font-size:15px;">Vos informations sont Importantes !</span><br /><br />
+        <span style="color:gray;text-align:justify;">
+            L'ensemble des informations que vous allez devoir fournir par la suite sont extrêmement importantes dans le fonctionnement du site!<br><br>
+            Ces informations  vous concernent serviront à vous identifier lors de vos inscriptions aux plongées, de vos demande d'assistance ou bien tout simplement pour vous informer sur les dernières nouvelles du club ou des changements de dernière minute sur une date ou un lieu de plongée.<br><br>
+            Neptune Plongée s'engage à ne pas divulguer vos informations personnelles à d'autre fin que celui du bon fonctionnement du site !<br><br>
+            En application de l'articles 36 de la loi dite "Informatique et libertés" n° 78-17 du 6 janvier 1978, vous disposez d'un droit de modification et de suppression des données qui vous concernent, que vous pourrez exercer directement via votre espace personnel.
+        </span>
+    </div><br/>
+       
+<div class="well" style="margin: 0 auto;width: 330px;">
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+           
+                    {{ form_errors(form) }}
+           
+          
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.username , 'Nom d\'utilisateur ') }}</span>
+                {{ form_widget(form.username) }} 
+                {{ form_errors(form.username) }}
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.email) }}</span>
+                {{ form_widget(form.email) }} 
+                {{ form_errors(form.email) }}
+            </div><br />
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.nom , 'Nom') }}</span>
+                {{ form_widget(form.nom) }} 
+                {{ form_errors(form.nom) }}
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.prenom , 'Prénom') }}</span>
+                {{ form_widget(form.prenom) }} 
+                {{ form_errors(form.prenom) }}         
+            </div><br />
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.plainPassword.first , 'Mot De Passe') }}</span>
+                {{ form_widget(form.plainPassword.first) }} 
+                {{ form_errors(form.plainPassword.first) }}
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.plainPassword.second , 'Vérification') }}</span>
+                {{ form_widget(form.plainPassword.second) }} 
+                {{ form_errors(form.plainPassword.second) }}
+            </div><br />       
+            {{ form_rest(form) }}   
+            <div>
+                <input class="btn  btn-small btn-success" type="submit" value="Créer mon compte" />
+            </div>
+        </form>   
+    </div>
+</div> 
+{% endblock %}

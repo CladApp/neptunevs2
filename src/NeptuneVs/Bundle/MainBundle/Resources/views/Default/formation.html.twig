@@ -8,31 +8,35 @@
     <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/formation.css') }}"/>
 {% endblock %}
 {% block content %}
-<div  style="padding: 20px;">
-    <div class="contFormation">
-        <div class="contTitreFormation">
-            <div class="contImgTitre">
-                <img src="{{ asset("bundles/neptunevsmain/images/formation/formation1.png") }}" alt="neptune plongée" />
-            </div>
-            <div class="titreFormation">Formation plongeur</div>
-        </div><br />
-        <p> Le club peut initier des personnes à la plongée sous-marine.<br/>
-            Une formation permet d'obtenir le Brevet Elémentaire (niveau 1)
-            grâce auquel il est possible de plonger jusqu'à 20 mètres.<br/>
-            Le niveau 2 est le début de
-            l'autonomie car les plongeurs majeurs peuvent aller jusqu'à 20 mètres sans encadrement. <br/>
-            Le niveau 3 permet une autonomie jusqu'à 60 mètres. <br/>
-            Le niveau 4 est un guide de plongée qui encadre et accompagne les autres plongeurs.
-        </p><br />
-        <div class="titreFormation">
-            <div class="contImgTitre">
-                <img src="{{ asset("bundles/neptunevsmain/images/formation/formation2.png") }}" alt="neptune plongée" />
-            </div>
-            <div class="titreFormation2">Formation encadrement</div>
-        </div><br/>
-        <p>L'initiateur forme des plongeurs niveau 1 et niveau 2. <br/>
-            Le moniteur fédéral 1 forme les plongeurs jusqu'au niveau 4. <br/>
-            Le moniteur fédéral 2 forme et valide les brevets de tous les plongeurs et encadrants de niveaux inférieurs.
-        </p><br/><br/>
-    </div>
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Les formations</li>
+    </ul>
+    <div  style="padding: 20px;">
+        <div class="contFormation">
+            <div class="contTitreFormation">
+                <div class="contImgTitre">
+                    <img src="{{ asset("bundles/neptunevsmain/images/formation/formation1.png") }}" alt="neptune plongée" />
+                </div>
+                <div class="titreFormation">Formation plongeur</div>
+            </div><br />
+            <p> Le club peut initier des personnes à la plongée sous-marine.<br/>
+                Une formation permet d'obtenir le Brevet Elémentaire (niveau 1)
+                grâce auquel il est possible de plonger jusqu'à 20 mètres.<br/>
+                Le niveau 2 est le début de
+                l'autonomie car les plongeurs majeurs peuvent aller jusqu'à 20 mètres sans encadrement. <br/>
+                Le niveau 3 permet une autonomie jusqu'à 60 mètres. <br/>
+                Le niveau 4 est un guide de plongée qui encadre et accompagne les autres plongeurs.
+            </p><br />
+            <div class="titreFormation">
+                <div class="contImgTitre">
+                    <img src="{{ asset("bundles/neptunevsmain/images/formation/formation2.png") }}" alt="neptune plongée" />
+                </div>
+                <div class="titreFormation2">Formation encadrement</div>
+            </div><br/>
+            <p>L'initiateur forme des plongeurs niveau 1 et niveau 2. <br/>
+                Le moniteur fédéral 1 forme les plongeurs jusqu'au niveau 4. <br/>
+                Le moniteur fédéral 2 forme et valide les brevets de tous les plongeurs et encadrants de niveaux inférieurs.
+            </p><br/><br/>
+        </div>
 {% endblock %}

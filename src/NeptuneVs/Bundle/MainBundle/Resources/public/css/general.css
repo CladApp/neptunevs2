@@ -301,3 +301,16 @@ div#footer {
     font-family: Tahoma, Geneva, sans-serif; 
     height: 11px;
 }
+
+.navbar .nav > li > a{
+    color: gray;
+    font-weight: bold;
+}   
+
+div.alert > ul > li{
+    
+    list-style: none;
+}
+div.alert > ul{
+    margin: 0 0 0 25px;
+}

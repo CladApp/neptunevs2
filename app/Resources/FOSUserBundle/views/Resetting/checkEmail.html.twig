@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Mot de passe perdu
+{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Mot de passe perdu</li>
+    </ul>
+    <div class="well" style="margin: 20px;"> 
+        <p>
+        {{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+        </p>
+    </div>
+{% endblock %}

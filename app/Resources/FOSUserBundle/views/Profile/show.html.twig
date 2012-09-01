@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Mes Informations
+{% endblock %}
+
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+    <li class="active">Mes Informations</li>
+</ul>
+<div class="well" style="margin: 20px;">
+    <div class="input-prepend">
+        <span class="add-on">Nom</span><span class="input-large uneditable-input">{{ user.nom }}</span>
+    </div><br />
+    <div class="input-prepend">
+        <span class="add-on">Prénom</span><span class="input-large uneditable-input">{{ user.prenom }}</span>
+    </div><br />
+    <div class="input-prepend">
+        <span class="add-on">Adresse e-mail</span><span class="input-large uneditable-input">{{ user.email }}</span>
+    </div><br />
+        <a class="btn  btn-small btn-success" href="{{ path('fos_user_profile_edit')}}">Modifier</a>
+        &nbsp;
+        <a class="btn btn-small btn-info" href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a>
+</div>
+{% endblock %}

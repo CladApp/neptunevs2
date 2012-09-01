@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Compte créé
+{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Vérifiez vos e-mail</li>
+    </ul>
+    <div class="well" style="margin: 20px;"> 
+        <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+    </div>
+{% endblock %}

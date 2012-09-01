@@ -21,3 +21,8 @@ monolog:
 
 assetic:
     use_controller: true
+    
+swiftmailer:
+    transport: gmail
+    username:  julien.denechere@gmail.com
+    password:  aqwZSX15

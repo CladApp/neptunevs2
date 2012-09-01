@@ -63,3 +63,11 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: NeptuneVs\Bundle\UserBundle\Entity\User
+    profile:
+        form:
+            type: NeptuneVs_user_profile
+    registration:
+        form:
+            type: NeptuneVs_user_registration
+        confirmation:
+            enabled:    true

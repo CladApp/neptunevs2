@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Mot de passe perdu
+{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Nouveau Mot de Passe</li>
+    </ul>
+    <div class="well" style="margin: 20px;"> 
+    <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+        <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.new.first , 'Nouveau') }}</span>
+                {{ form_widget(form.new.first) }} 
+                {{ form_errors(form.new.first) }}
+            </div><br /> 
+            <div class="input-prepend">    
+                <span class="add-on">{{ form_label(form.new.second , 'Vérification') }}</span>
+                {{ form_widget(form.new.second) }} 
+                {{ form_errors(form.new.second) }}
+            </div><br />       
+            {{ form_rest(form) }}
+        <div>
+            <input class="btn  btn-small btn-success" type="submit" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+    </form>
+{% endblock %}   

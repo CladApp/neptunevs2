@@ -1,0 +1,49 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Modifier mes indormations
+{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li><a href="{{ path('fos_user_profile_show') }}">Mes Informations</a> <span class="divider">/</span></li>
+        <li class="active">Modifier mes Informations</li>
+    </ul>
+    <div class="well" style="margin: 20px;">
+        <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+            {% if form_errors(form) %}
+
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ form_errors(form) }}
+                </div> 
+            {% endif %}
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.user.nom) }}</span>
+                {{ form_widget(form.user.nom) }} 
+                {{ form_errors(form.user.nom) }}
+            </div><br />
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.user.prenom) }}</span>
+                {{ form_widget(form.user.prenom) }} 
+                {{ form_errors(form.user.prenom) }}            
+            </div><br />
+            <div class="input-prepend">    
+                <span class="add-on">{{ form_label(form.user.email) }}</span>
+                {{ form_widget(form.user.email) }} 
+                {{ form_errors(form.user.email) }}            
+            </div><br />
+            <div class="input-prepend">
+                <span class="add-on">{{ form_label(form.current , 'Mot de passe actuel') }}</span>
+                {{ form_widget(form.current) }} 
+                {{ form_errors(form.current) }}
+            </div>       
+            {{ form_rest(form) }}
+            <br />
+            <div>
+                <input class="btn  btn-small btn-success" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+            </div>
+        </form>
+    </div>
+{% endblock %}

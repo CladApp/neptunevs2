@@ -1,7 +1,7 @@
 parameters:
-#    neptune_vs_main.example.class: NeptuneVs\Bundle\MainBundle\Example
-
+    NeptuneVs_main.parametre.class: NeptuneVs\Bundle\MainBundle\Services\ParamService
+    
 services:
-#    neptune_vs_main.example:
-#        class: %neptune_vs_main.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    param:
+        class: %NeptuneVs_main.parametre.class%
+        arguments: [@doctrine.orm.entity_manager]

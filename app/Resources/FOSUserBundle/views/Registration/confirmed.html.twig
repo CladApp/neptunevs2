@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Création d'un compte
+{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Compte vérifié</li>
+    </ul>
+    <div class="well" style="margin: 20px;"> 
+        <p>Félicitations, votre compte est maintenant vérifié.<br />Attendez le mail d'activation de votre compte par un administateur.</p>
+        {% if app.session is not empty %}
+            {% set targetUrl = app.session.get('_security.target_path') %}
+            {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
