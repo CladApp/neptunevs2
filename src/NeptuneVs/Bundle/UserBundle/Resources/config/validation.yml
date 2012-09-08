@@ -1,0 +1,14 @@
+NeptuneVs\Bundle\UserBundle\Entity\User:
+    properties:
+        nom:
+            - NotBlank: ~
+            - NotNull: ~
+        prenom:
+            - NotBlank: ~
+            - NotNull: ~
+        email:
+            - Email:
+                message: Cette adresse email n'est pas valide.
+                checkMX: true
+            - NotBlank: ~
+            - NotNull: ~

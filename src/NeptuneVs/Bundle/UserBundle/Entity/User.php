@@ -1,4 +1,5 @@
 <?php
+
 // src/Acme/UserBundle/Entity/User.php
 
 namespace NeptuneVs\Bundle\UserBundle\Entity;
@@ -10,9 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\Entity(repositoryClass="NeptuneVs\Bundle\UserBundle\Repository\UserRepository")
  */
-class User extends BaseUser
-{
+class User extends BaseUser {
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -20,12 +22,13 @@ class User extends BaseUser
      */
     protected $id;
 
-    public function __construct()
-    {
+    const ROLE_DEFAULT = 'ROLE_MEMBRE';
+
+    public function __construct() {
         parent::__construct();
         // your own logic
     }
-    
+
     /**
      * @var string $nom
      *
@@ -41,8 +44,8 @@ class User extends BaseUser
      * @Assert\NotNull(message = "Réponse attendu...")
      */
     private $prenom;
-    
-     /**
+
+    /**
      * Set nom
      *
      * @param string $nom
@@ -76,5 +79,18 @@ class User extends BaseUser
      */
     public function getPrenom() {
         return $this->prenom;
+    }
+
+    /**
+     * 
+     * @param array $roles
+     */
+    public function removeRoles($roles) {
+
+        foreach ($roles as $role) {
+            if ($this->hasRole($role)) {
+                $this->removeRole($role);
+            }
+        }
     }
 }

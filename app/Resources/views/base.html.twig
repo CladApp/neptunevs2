@@ -16,7 +16,7 @@
             <link media="screen" type="text/css" rel="stylesheet" href="{{ asset('bundles/neptunevsmain/css/general.css') }}"/>
 
         {% block stylesheets %}{% endblock %}
-            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+            <link rel="shortcut icon" href="http://neptunevs.fr/extra/favicon.ico" />
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
             <script type="text/javascript" src="{{ asset('bundles/neptunevsmain/js/bootstrap.js') }}"></script>
         {% block javascripts %}{% endblock %}
@@ -38,31 +38,19 @@
                 <div id="imgTtBD"></div>
             </div>
             <div id="ContBarHaut">
-                <div id="imgBarG"></div>
-                <div id="imgBarM"></div>
-                <div id="imgBarD">
+                <div id="imgBarG">
                     {% if is_granted('ROLE_USER') %}
-                        <div class="contMenuHeaderDroit">
-                            <div class="contUserNameMenu">
-                                <span>Bonjour {{ app.user.getPrenom() }} !</span>
-                            </div>
+                        <div class="contMenuHeaderDroit">                           
                             <div class="contLogOutMenu">
                                 <a href="{{ path('fos_user_security_logout') }}">
                                     <img src="{{ asset('bundles/neptunevsmain/images/imgSite/deco.png') }}" title="Cliquez ici pour vous déconnecter" alt="deco" />
                                 </a>
                             </div>
                         </div>
-                    {% else %}
-                        <form id="loginformmenu" class="form-inline" action="{{ path('fos_user_security_check') }}" method="post">
-                            <input type="hidden" name="_csrf_token" value="{% render('NeptuneVsMainBundle:Default:getToken') %}" />
-                            <div class="contLoginMenu">
-                                Login: <input id="username" class="span1" name="_username" value="" type="text" size="11" maxlength="25" />
-                                Pass: <input id="password" class="span1" name="_password" type="password" size="11" maxlength="25" value="" />
-                                <button  class="btn btn-mini" type="submit" name="verifer">Ok</button>
-                            </div>
-                        </form>
-                    {% endif %}
+                    {% endif %}               
                 </div>
+                <div id="imgBarM"></div>
+                <div id="imgBarD"></div>
             </div>
             <div id="center">
                 <div id="sidebar">
@@ -95,7 +83,7 @@
                 </div>
                 <div id="content">
                     {% if is_granted('ROLE_MEMBRE') %}                       
-                        <div class="navbar navbar-static-top" ><button style="padding: 10px 10px 0 0;" type="button" class="close" data-dismiss="alert">×</button>
+                        <div class="navbar navbar-static-top" >
                             <div class="navbar-inner">                              
                                 <ul class="nav">
                                     <li class="dropdown">
@@ -114,14 +102,14 @@
                                     </li>                       
                                     {% if is_granted('ROLE_BIOLOGIE') %}                                     
                                         <li class="divider-vertical"></li>
-                                        <li class="dropdown pull-right">
+                                        <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="#">Gestion des Contacts</a></li>                                            
                                                 <li><a href="#">Gestion des Dates</a></li>
                                                 <li><a href="#">Gestion des Documents</a></li>
                                                 <li><a href="#">Gestion des Liens</a></li>
-                                                <li><a href="#">Gestion des Membres</a></li>
+                                                <li><a href="{{ path('NeptuneVsUserBundle_admin.show') }}"><i class="icon-user"></i>&nbsp;Gestion des Membres</a></li>
                                                 <li><a href="#">Gestion des News</a></li>
                                                 <li><a href="#">Gestion des Occasions</a></li>
                                                 <li><a href="#">Gestion des Photos</a></li>
@@ -134,9 +122,30 @@
                                     {% endif %}
                                     <li class="divider-vertical"></li>
                                     <li><a href="#">M'inscrire aux Plongées</a></li>
-                                 </ul>                                    
+                                    
+                                    
+                                 </ul>
+                                 <ul class="nav pull-right">
+                                        <li>
+                                        <a style="padding: 7px;" href="{{ path('fos_user_security_logout') }}">
+                                            <img src="{{ asset('bundles/neptunevsmain/images/imgSite/deco.png') }}" title="Cliquez ici pour vous déconnecter" />
+                                        </a>
+                                    </li>
+                                    </ul>   
                             </div>
-                        </div>                     
+                        </div> 
+                        
+                    {% else %}
+                    <div class="navbar navbar-static-top">
+                        <div class="navbar-inner">
+                            <form class="navbar-form" style="width: 505px;margin: 0 auto;" action="{{ path('fos_user_security_check') }}" method="post">
+                                <input type="hidden" name="_csrf_token" value="{% render('NeptuneVsMainBundle:Default:getToken') %}" />
+                                <input id="username"  name="_username" value="" type="text" placeholder="Email / Login" />
+                                <input id="password"  name="_password" type="password" placeholder="Mot de passe" />
+                                <button  class="btn" type="submit" name="verifer">Ok</button>
+                            </form>
+                        </div>
+                    </div>
                     {% endif %}
                     {% block content %}{% endblock %}
                 </div>

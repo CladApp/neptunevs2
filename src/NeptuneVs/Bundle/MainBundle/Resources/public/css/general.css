@@ -62,6 +62,7 @@ div#header h1 {
     font-weight: bold;
     position: relative;   
     left: 45px;
+    top: 1px;
 }
 .titreDate {
     font-size: 11px;
@@ -69,6 +70,7 @@ div#header h1 {
     font-weight: bold;
     position: relative;
     left: 68px;
+    top: 1px;
 }
 .titreFete {
     font-size: 11px;
@@ -308,9 +310,18 @@ div#footer {
 }   
 
 div.alert > ul > li{
-    
+
     list-style: none;
 }
 div.alert > ul{
     margin: 0 0 0 25px;
+}
+
+/*adminusers*/
+
+.adminUserAlert {
+    width: 300px;
+    min-height: 15px;
+    padding: 0px 35px 8px 14px;
+    margin-bottom: 0px;
 }

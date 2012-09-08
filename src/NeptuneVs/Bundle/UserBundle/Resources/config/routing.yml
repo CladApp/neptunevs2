@@ -1,3 +1,19 @@
-NeptuneVsUserBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: NeptuneVsUserBundle:Default:index }
+NeptuneVsUserBundle_admin.show:
+    pattern:  /admin/user/show
+    defaults: { _controller: NeptuneVsUserBundle:AdminUser:show }
+
+NeptuneVsUserBundle_admin.showEdit:
+    pattern:  /admin/user/show/showedit/user/{id}
+    defaults: { _controller: NeptuneVsUserBundle:AdminUser:showEdit }
+    
+NeptuneVsUserBundle_admin.edit:
+    pattern:  /admin/user/show/edit/user/{id}
+    defaults: { _controller: NeptuneVsUserBundle:AdminUser:edit }
+    
+NeptuneVsUserBundle_admin.valid:
+    pattern:  /admin/user/show/valid/user/{id}
+    defaults: { _controller: NeptuneVsUserBundle:AdminUser:LockedUser }    
+
+NeptuneVsUserBundle_admin.delUser:
+    pattern:  /admin/user/show/del/user/{id}
+    defaults: { _controller: NeptuneVsUserBundle:AdminUser:delUser }

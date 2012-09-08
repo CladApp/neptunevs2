@@ -1,0 +1,143 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Modifier mes indormations
+{% endblock %}
+    
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/neptunevsuser/js/adminUsers.js') }}"></script>
+{% endblock %}
+    
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">Gestion des Membres</li>
+    </ul>
+    <div class="well" style="margin: 20px;"> 
+        <blockquote>
+            <p><small>Utilisateurs en attente de validation</small></p>
+        </blockquote>
+        <br/>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>E-mail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users.listUserLocked %}
+                <tr class="error">
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a class="btn btn-small btn-info EditUser" user-id="{{ user.id }}" href="{{path('NeptuneVsUserBundle_admin.showEdit', { 'id': user.id })}}" title="Modifier les informations de l'utilisateur">Modifier</a>
+                        <a class="btn btn-small btn-success" href="{{ path('NeptuneVsUserBundle_admin.valid', {'id': user.id}) }}" title="Activer le compte de l'utilisateur">Activer</a>
+                        <div style="float: right;"><a class="btn btn-small btn-danger delUser" href="#" link="{{path('NeptuneVsUserBundle_admin.delUser', { 'id': user.id })}}" title="Supprimer cet utilisateur">X</a></div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="well" style="margin: 20px;">
+        <blockquote>
+            <p><small>Utilisateurs en cours d'inscription (validation email)</small></p>
+        </blockquote>
+        <br/>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>E-mail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users.listUserInscription %}
+                    <tr class="info">
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>                                                      
+                        <div style="float: right;"><a class="btn btn-small btn-danger delUser" href="#" link="{{path('NeptuneVsUserBundle_admin.delUser', { 'id': user.id })}}" title="Supprimer cet utilisateur">X</a></div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="well" style="margin: 20px;"> 
+        <blockquote>
+            <p><small>Utilisateurs Actifs</small></p>
+        </blockquote>
+        <br/>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>E-mail</th>
+                    <th>Rôle</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users.listUserUnLocked %}
+                <tr class="success">
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        
+                        {% for role in user.getRoles %}
+                            {% if loop.length > 1 %}
+                                {% if role != 'ROLE_MEMBRE'%}{{ role }}{% endif %}
+                            {% else %}
+                                {{ role }}
+                            {% endif%}
+                                
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a class="btn btn-small btn-info EditUser" user-id="{{ user.id }}" href="{{path('NeptuneVsUserBundle_admin.showEdit', { 'id': user.id })}}" title="Modifier les informations de l'utilisateur">Modifier</a>
+                        <a class="btn btn-small btn-warning" href="{{ path('NeptuneVsUserBundle_admin.valid', {'id': user.id}) }}" title="Déactiver le compte de l'utilisateur">Déactiver</a>
+                        <div style="float: right;"><a class="btn btn-small btn-danger delUser" href="#" link="{{path('NeptuneVsUserBundle_admin.delUser', { 'id': user.id })}}" title="Supprimer cet utilisateur">X</a></div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div style="width: 450px;" class="modal hide fade" id="modalEditUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 id="myModalLabel">Modifier l'utilisateur</h4>
+        </div>
+        <div class="modal-body">
+            <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+            <button id="sendEdit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </div>
+    <div class="modal hide fade" id="modalDelUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Supprimer le membre</h3>
+        </div>
+        <div class="modal-body">
+            <p>Etes vous sûr de vouloir supprimer ce membre ?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Non</button>
+            <a id="validDelUser" class="btn btn-primary" href="#">Oui</a>
+        </div>
+    </div>
+{% endblock %}

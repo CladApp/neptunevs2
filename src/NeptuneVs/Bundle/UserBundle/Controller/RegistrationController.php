@@ -20,6 +20,8 @@ class RegistrationController extends BaseController {
         }
         
         $user->setConfirmationToken(null);
+        $user->setEnabled(true);
+        $user->setLocked(true);
         $user->setLastLogin(new \DateTime());
 
         $this->container->get('fos_user.user_manager')->updateUser($user);

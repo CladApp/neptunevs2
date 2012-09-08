@@ -1,0 +1,62 @@
+<div class="well" style="margin-bottom: 0px;">
+    <form style="margin-bottom: 0px;" action="{{ path('NeptuneVsUserBundle_admin.edit', {'id' : user.id}) }}" method="post" {{ form_enctype(form) }}>
+        {% if form_errors(form) %}
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ form_errors(form) }}
+            </div> 
+        {% endif %}
+        <div class="input-prepend">
+            <span class="add-on">{{ form_label(form.nom) }}</span>
+            {{ form_widget(form.nom) }}       
+        </div>
+        {% if form_errors(form.nom) %}
+            <div class="alert alert-error adminUserAlert">    
+                <button type="button" class="close" style="padding-top: 3px;" data-dismiss="alert">×</button>
+                {{ form_errors(form.nom) }}
+            </div> 
+        {% endif %}
+        <br />
+        <div class="input-prepend">
+            <span class="add-on">{{ form_label(form.prenom) }}</span>
+            {{ form_widget(form.prenom) }}                
+        </div>
+        {% if form_errors(form.prenom) %}
+            <div class="alert alert-error adminUserAlert">     
+                <button type="button" class="close" style="padding-top: 3px;" data-dismiss="alert">×</button>
+                {{ form_errors(form.prenom) }}
+            </div> 
+        {% endif %}
+        <br />
+        <div class="input-prepend">    
+            <span class="add-on">{{ form_label(form.email) }}</span>
+            {{ form_widget(form.email) }}                   
+        </div>
+        {% if form_errors(form.email) %}
+            <div class="alert alert-error adminUserAlert">   
+                <button type="button" class="close" style="padding-top: 3px;" data-dismiss="alert">×</button>
+                {{ form_errors(form.email) }}
+            </div> 
+        {% endif %}
+        <br />
+        <div class="input-prepend">    
+            <span class="add-on">{{ form_label(form.roles) }}</span>
+            {{ form_widget(form.roles) }}                  
+        </div>
+        {% if form_errors(form.roles) %}
+            <div class="alert alert-error adminUserAlert">  
+                <button type="button" class="close" style="padding-top: 3px;" data-dismiss="alert">×</button>
+                {{ form_errors(form.roles) }}
+            </div> 
+        {% endif %}
+        <br />
+        <label class="checkbox">{{ form_widget(form.locked) }} Déactiver l'utilisateur</label>                         
+        {% if form_errors(form.locked) %}
+            <div class="alert alert-error adminUserAlert">  
+                <button type="button" class="close" style="padding-top: 3px;" data-dismiss="alert">×</button>
+                {{ form_errors(form.locked) }}
+            </div> 
+        {% endif %}
+        {{ form_rest(form) }}
+    </form>
+</div>
