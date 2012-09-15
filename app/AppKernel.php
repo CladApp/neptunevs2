@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new NeptuneVs\Bundle\UserBundle\NeptuneVsUserBundle(),
             new NeptuneVs\Bundle\MainBundle\NeptuneVsMainBundle(),
+            new NeptuneVs\Bundle\AgendaBundle\NeptuneVsAgendaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

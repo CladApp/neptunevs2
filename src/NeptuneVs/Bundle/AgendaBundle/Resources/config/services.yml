@@ -1,0 +1,7 @@
+parameters:
+#    neptune_vs_agenda.example.class: NeptuneVs\Bundle\AgendaBundle\Example
+
+services:
+#    neptune_vs_agenda.example:
+#        class: %neptune_vs_agenda.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

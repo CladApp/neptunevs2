@@ -1,0 +1,8 @@
+<div class="well">
+    <h4>Liste des inscrits pour le <span style="color: #08C;text-transform: capitalize">{{event.start| localizeddate('full', 'none')}}</span></h4>
+ {{event.start|date}}{{event.end|date}}
+     {% for eventuser in eventusers %}
+        {{ eventuser.user.nom }} {{ eventuser.user.prenom }}
+    {% endfor %} 
+
+</div>

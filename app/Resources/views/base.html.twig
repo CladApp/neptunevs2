@@ -17,7 +17,7 @@
 
         {% block stylesheets %}{% endblock %}
             <link rel="shortcut icon" href="http://neptunevs.fr/extra/favicon.ico" />
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
             <script type="text/javascript" src="{{ asset('bundles/neptunevsmain/js/bootstrap.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </head>
@@ -30,8 +30,8 @@
                 </div>
                 <div id="imgTtHM"></div>
                 <div id="imgTtHD">
-                    <span class="titreHeure">{{ "now" | date("H\:i") }}</span>
-                    <span class="titreDate">{{ "now" |date('d/m/Y') }}</span>
+                    <span class="titreDate">{{ "now"|localizeddate('full', 'none')}}</span>
+                    <span class="titreHeure">{{ "now"|date("H\:i") }}</span>                  
                 </div>
                 <div id="imgTtBG"></div>
                 <div id="imgTtBM"></div>
@@ -39,15 +39,9 @@
             </div>
             <div id="ContBarHaut">
                 <div id="imgBarG">
-                    {% if is_granted('ROLE_USER') %}
-                        <div class="contMenuHeaderDroit">                           
-                            <div class="contLogOutMenu">
-                                <a href="{{ path('fos_user_security_logout') }}">
-                                    <img src="{{ asset('bundles/neptunevsmain/images/imgSite/deco.png') }}" title="Cliquez ici pour vous déconnecter" alt="deco" />
-                                </a>
-                            </div>
-                        </div>
-                    {% endif %}               
+                    <div class="contImgMenuHGauche">
+                        <img src="{{ asset('bundles/neptunevsmain/images/imgSite/tortue_48.png') }}" title="Bienvenue sur Neptune :)" alt="img" />
+                    </div>                    
                 </div>
                 <div id="imgBarM"></div>
                 <div id="imgBarD"></div>
@@ -60,7 +54,7 @@
                         <li><a href="#"><i class="icon-chevron-right icon-white"></i>Les News</a></li>
                         <li><a href="#"><i class="icon-chevron-right icon-white"></i>Album Photos</a></li>
                         <li><a href="#"><i class="icon-chevron-right icon-white"></i>Les Documents</a></li>
-                        <li><a href="#"><i class="icon-chevron-right icon-white"></i>Inscription Plongée</a></li>
+                        <li><a href="{{ path('NeptuneVsAgendaBundle_agenda_show') }}"><i class="icon-chevron-right icon-white"></i>Inscription Plongée</a></li>
                         <li><a href="#"><i class="icon-chevron-right icon-white"></i>Résultats Sondages</a></li>
                     {% endif %}
                         <li class="nav-header titremenu">Le Club</li>
@@ -121,7 +115,7 @@
                                         </li>                                    
                                     {% endif %}
                                     <li class="divider-vertical"></li>
-                                    <li><a href="#">M'inscrire aux Plongées</a></li>
+                                    <li><a href="{{ path('NeptuneVsAgendaBundle_agenda_show') }}">M'inscrire aux Plongées</a></li>
                                     
                                     
                                  </ul>

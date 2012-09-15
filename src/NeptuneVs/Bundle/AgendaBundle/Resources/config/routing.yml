@@ -1,0 +1,11 @@
+NeptuneVsAgendaBundle_agenda_show:
+    pattern:  /agenda/show
+    defaults: { _controller: NeptuneVsAgendaBundle:Membre:index }
+NeptuneVsAgendaBundle_agenda_show_events:
+    pattern:  /agenda/events
+    defaults: { _controller: NeptuneVsAgendaBundle:Membre:generateEvents }
+    requirements:
+        _method:  GET
+NeptuneVsAgendaBundle_agenda_show_event:
+    pattern:  /agenda/event
+    defaults: { _controller: NeptuneVsAgendaBundle:Membre:showEvent }

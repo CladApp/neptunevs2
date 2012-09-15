@@ -4,6 +4,7 @@ namespace NeptuneVs\Bundle\MainBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use NeptuneVs\Bundle\MainBundle\Entity\Parametre;
+
 class ParamService {
 
     protected $params;
@@ -15,7 +16,7 @@ class ParamService {
     }
 
     public function setParam($cle, $parametre) {
-        
+
         foreach ($this->params as $param) {
             if ($param->getCle() == $cle) {
                 $param->setValeur($parametre);
@@ -23,8 +24,7 @@ class ParamService {
                 $this->em->flush();
                 break;
             }
-        }       
-        
+        }
     }
 
     public function getParams(array $cles) {
@@ -35,6 +35,25 @@ class ParamService {
                     $listParam[$value] = $param->getValeur();
                 }
             }
+        }
+        return $listParam;
+    }
+
+    public function getParam($cle) {
+        foreach ($this->params as $param) {
+            if ($param->getCle() == $cle) {
+                return $param->getValeur();
+            }
+        }
+
+        return 'null';
+    }
+
+    public function getAllParams() {
+        $listParam = array();
+
+        foreach ($this->params as $param) {
+            $listParam[$param->getCle()] = $param->getValeur();
         }
         return $listParam;
     }

@@ -1,0 +1,89 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Les formations
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' type='text/css' href='{{ asset('bundles/neptunevsagenda/css/fullcalendar/fullcalendar.css') }}' />
+    <link rel='stylesheet' type='text/css' href='{{ asset('bundles/neptunevsagenda/css/fullcalendar/fullcalendar.print.css') }}' media='print' />
+    <link rel='stylesheet' type='text/css' href='{{ asset('bundles/neptunevsagenda/css/agenda.css') }}' media='print' />
+{% endblock %}
+{% block javascripts %}
+    <script type='text/javascript' src='{{ asset('bundles/neptunevsagenda/js/fullcalendar/fullcalendar.js') }}'></script>
+    <script type='text/javascript' src='{{ asset('bundles/neptunevsagenda/js/agenda.js') }}'></script>
+    <script type="text/javascript" src="{{ asset('bundles/neptunevsagenda/js/jquery-ui-1.8.23.custom.min.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{{ path('NeptuneVsMainBundle_homepage') }}">Accueil</a> <span class="divider">/</span></li>
+        <li class="active">M'inscrire aux Plongées</li>
+    </ul>
+    <div class="well" style="width: 700px;margin: 0 auto;margin-bottom: 20px;">
+        <button type="button" class="close" data-dismiss="alert" title="Cacher">×</button>
+        <blockquote>
+            <dl>
+                <dt style="color: red;"><h5>Attention s'il n'y a pas de Directeur de Plongée, celle-ci est annulée !!!</h5></dt>
+                <dd style="color: grey;"> - Vérifiez le jour précédent la présence d'un directeur de plongée car l'absence de DP oblige à la suppression de la sortie pour cette date ! (Sauf piscine)</dd>
+                <dd style="color: grey;"> - Lors des vacances scolaires les plongées en piscine sont annulées, sauf les vacances d'été où celles-ci sont remplacées par des plongées en carrière le mercredi et le vendredi.</dd>
+            </dl>
+        </blockquote>       
+    </div>
+    
+    <style type='text/css'>
+        #calendar {
+            width: 700px;
+            margin: 0 auto;
+        }
+        .fc-header-title{
+            color: #08C;
+            margin-bottom: 10px;
+        }
+        .fc-event-skin{
+            border: 0px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .fc-state-highlight{
+            background: #DFF0D8;
+        }  
+        .fc-event {
+            font-size: .95em;
+        }
+        .fc-widget-header{
+            color: darkorange;
+        }
+
+        .fc-event .fc-event-skin{
+            cursor: help;
+        }
+    </style> 
+    <div class="well" style="width: 700px;margin: 0 auto;">
+        <div style="color: grey;text-align: center;">
+            <span class="label">Légende :</span>&nbsp;&nbsp;&nbsp;
+            <span style="color: crimson;">Sortie Plongée</span>&nbsp;&nbsp;
+            <span style="color: darkSeaGreen;">Cours Biologie</span>&nbsp;&nbsp;
+            <i class="icon-star-empty"></i>&nbsp;Je suis inscrit(e)
+        </div><br/>
+        <div class="navbar navbar-static-top" style="width: 700px;margin: 0 auto;">
+            <div class="navbar-inner">
+                <span id='calDate' class="brand" href="#"></span>          
+                <div class="btn-group pull-right">
+                    <button id="calPrev" class="btn btn-small btn-inverse" title="Mois précédent"><i class="icon-arrow-left icon-white"></i></button>
+                    <button id="calToday" class="btn btn-small btn-inverse">Aujourd'hui</button>
+                    <button id="calNext"class="btn btn-small btn-inverse" title="Mois suivant"><i class="icon-arrow-right icon-white"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id='calendar'></div>
+    </div>
+    
+    <div class="modal hide fade" id="modalEventUser" style="top: 300px;" url="{{ path('NeptuneVsAgendaBundle_agenda_show_event')}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 id="myModalLabel">Evénement</h4>
+        </div>
+            <div class="modal-body" style="max-height: 700px;"></div>        
+    </div>
+{% endblock %}    
+    

@@ -1,0 +1,8 @@
+#calendar {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.fc-header-title{
+    color: gray;
+}

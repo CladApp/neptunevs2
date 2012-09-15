@@ -71,3 +71,38 @@ fos_user:
             type: NeptuneVs_user_registration
         confirmation:
             enabled:    true
+            
+parameters:
+    niveau_scaphndre_piscine:
+        debutant: Débutant
+        loisir: Loisir
+        apnee: Apnée
+        ecole2: Ecole N2
+        ecole4 : Ecole N4
+        ecoleinit : Ecole Init
+        ecolemf1 : Ecole MF1
+        encadrant : Encadrant  
+    niveau_apnee_piscine:
+        apnee1 : ApnPs1
+        apneedp : Dp  
+    niveau_scaphndre_carierre:
+        niveau1: Niveau 1
+        niveau2 : Niveau 2
+        niveau3 : Niveau 3
+        niveau4 : Niveau 4
+        p5 : P5
+        mf1 : MF1
+        mf2 : MF2
+        debutant : Débutant
+        visiteur: Visiteur
+    niveau_apnee_carierre:
+        apnee1 : ApnCa1
+        apneedp : Dp
+        
+services:
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }        
+        
+        

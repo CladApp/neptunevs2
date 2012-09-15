@@ -36,8 +36,8 @@ $(document).ready(function()
         
         $('.delUser').click(function(){
             $('#modalDelUser #validDelUser').attr("href", $(this).attr("link"));
-            $('#modalDelUser').modal('show');  
-            return false;
+              $('#modalDelUser').modal('show');  
+              return false;
         });
         
     });
