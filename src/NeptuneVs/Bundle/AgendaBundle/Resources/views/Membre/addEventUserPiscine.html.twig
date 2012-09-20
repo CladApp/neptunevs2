@@ -1,10 +1,4 @@
-<div class="well well-small" style="text-align: center;color: grey;">
-    <h4 style="color: #08C;">{{event.getTitle()}} <i id="placeDescription" class="icon-question-sign" data-content="{{place.getDescription() }}" data-html="true" data-placement="bottom" data-trigger="hover"></i></h4>
-    {% set start = date(event.start|date("Y-m-d H:i")) %}
-    {% set end = date(event.end|date("Y-m-d H:i")) %}
-    <span style="text-transform: capitalize;">Du {{start|localizeddate('full', 'none')}}</span><span> &agrave; {{start| localizeddate('none', 'short')}}</span> - 
-    <span style="text-transform: capitalize;">Au {{end|localizeddate('full', 'none')}}</span><span> &agrave; {{end| localizeddate('none', 'short')}}</span> 
-</div>
+{% include "NeptuneVsAgendaBundle:Membre:showEventDateAndPlace.html.twig" with {'event': event, 'place': place} %}
 <div class="well well-small">
     <div class="tabbable">
         <ul class="nav nav-tabs">          
@@ -19,111 +13,20 @@
             {% if formScaphandre%}
                 <div class="tab-pane active" id="tabScaphandre">                   
                     <div style="height: 160px;">
-                        <form action="" method="post" {{ form_enctype(formScaphandre) }}>
-                            <div style="width: 335px;float: left;margin-left: 15px;">
-                            {% if form_errors(formScaphandre) %}
-                                <div class="alert alert-error">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    {{ form_errors(formScaphandre) }}
-                                </div> 
-                            {% endif %}
-                                <div class="input-prepend">
-                                    <span class="add-on">Nom</span><span class="input-large uneditable-input">{{ user.nom }}</span>
-                                </div><br />
-                                <div class="input-prepend">
-                                    <span class="add-on">Prénom</span><span class="input-large uneditable-input">{{ user.prenom }}</span>
-                                </div><br />
-                                <div class="input-prepend">
-                                    <span class="add-on">{{ form_label(formScaphandre.niveau) }}</span>
-                                    {{ form_widget(formScaphandre.niveau) }}
-                                </div><br/>
-                                {{ form_rest(formScaphandre) }}
-                            </div>
-                            <div style="width: 120px;float: left;margin: 50px 0 0 15px;">
-                                <button class="btn btn-success">M'inscrire</button>
-                            </div>    
-                        </form>
-                    </div>
-                
+                        {% include "NeptuneVsAgendaBundle:Membre:formEventUserPiscine.html.twig" with {'form': formScaphandre, 'type': 'scaphandre'} %}
+                    </div>              
                     <div class="well" style="margin-top: 20px;">
-                        <table class="table table-bordered table-condensed">
-                            <caption class="badge badge-inverse">Liste des inscrits</caption>
-                            <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Niveau</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for userevent in event.getUsersevent() if userevent.scaphandre %}                        
-                                <tr>
-                                    <td>userevent.getUser().getNom()</td>
-                                    <td>userevent.getUser().getPrenom()</td>
-                                    <td>userevent.niveau</td>
-                                </tr>
-                            {% else %}
-                                 <tr>
-                                     <td colspan="3" style="text-align: center;">Aucun</td>
-                                </tr>
-                            {% endfor%}
-                            </tbody>
-                        </table>                   
+                        {% include "NeptuneVsAgendaBundle:Membre:showEventUsersList.html.twig" with {'event': event} %}             
                     </div>
                 </div>
             {% endif %} 
             {% if formApnee%}
                 <div class="tab-pane {{not formScaphandre?'active':''}}" id="tabApnee">                   
                     <div style="height: 160px;">
-                        <form action="" method="post" {{ form_enctype(formApnee) }}>
-                            <div style="width: 335px;float: left;margin-left: 15px;">                         
-                            {% if form_errors(formApnee) %}
-                                <div class="alert alert-error">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    {{ form_errors(formApnee) }}
-                                </div> 
-                            {% endif %}
-                                <div class="input-prepend">
-                                    <span class="add-on">Nom</span><span class="input-large uneditable-input">{{ user.nom }}</span>
-                                </div><br />
-                                <div class="input-prepend">
-                                    <span class="add-on">Prénom</span><span class="input-large uneditable-input">{{ user.prenom }}</span>
-                                </div><br />
-                                <div class="input-prepend">
-                                    <span class="add-on">{{ form_label(formApnee.niveau) }}</span>
-                                    {{ form_widget(formApnee.niveau) }}
-                                </div><br />
-                                {{ form_rest(formApnee) }}
-                            </div>
-                            <div style="width: 120px;float: left;margin: 50px 0 0 15px;">                               
-                                <button class="btn btn-success">M'inscrire</button>
-                            </div>                           
-                        </form>
+                        {% include "NeptuneVsAgendaBundle:Membre:formEventUserPiscine.html.twig" with {'form': formApnee, 'type': 'apnee'} %}
                     </div>
                     <div class="well" style="margin-top: 20px;">
-                        <table class="table table-bordered table-condensed">
-                            <caption class="badge badge-inverse">Liste des inscrits</caption>
-                            <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Niveau</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for userevent in event.getUsersevent() if userevent.apnee %}                        
-                                <tr>
-                                    <td>userevent.getUser().getNom()</td>
-                                    <td>userevent.getUser().getPrenom()</td>
-                                    <td>userevent.niveau</td>
-                                </tr>
-                            {% else %}
-                                 <tr>
-                                     <td colspan="3" style="text-align: center;">Aucun</td>
-                                </tr>
-                            {% endfor%}
-                            </tbody>
-                        </table>
+                        {% include "NeptuneVsAgendaBundle:Membre:showEventUsersList.html.twig" with {'event': event} %}   
                     </div>
                 </div>
             {% endif %}                

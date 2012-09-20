@@ -1,0 +1,7 @@
+<div class="well well-small alert-success" style="text-align: center;color: grey;">
+    <h4 style="color: #08C;">{{event.getTitle()}} <i id="placeDescription" class="icon-question-sign" data-content="{{place.getDescription() }}" data-html="true" data-placement="bottom" data-trigger="hover"></i></h4>
+    {% set start = date(event.start|date("Y-m-d H:i")) %}
+    {% set end = date(event.end|date("Y-m-d H:i")) %}
+    <span style="text-transform: capitalize;">Du {{start|localizeddate('full', 'none')}}</span><span> &agrave; {{start| localizeddate('none', 'short')}}</span> - 
+    <span style="text-transform: capitalize;">Au {{end|localizeddate('full', 'none')}}</span><span> &agrave; {{end| localizeddate('none', 'short')}}</span> 
+</div>

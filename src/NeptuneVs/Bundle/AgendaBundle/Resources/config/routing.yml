@@ -1,11 +1,17 @@
 NeptuneVsAgendaBundle_agenda_show:
-    pattern:  /agenda/show
+    pattern:  /membre/agenda/show
     defaults: { _controller: NeptuneVsAgendaBundle:Membre:index }
 NeptuneVsAgendaBundle_agenda_show_events:
-    pattern:  /agenda/events
+    pattern:  /membre/agenda/events
     defaults: { _controller: NeptuneVsAgendaBundle:Membre:generateEvents }
     requirements:
         _method:  GET
 NeptuneVsAgendaBundle_agenda_show_event:
-    pattern:  /agenda/event
+    pattern:  /membre/agenda/event
     defaults: { _controller: NeptuneVsAgendaBundle:Membre:showEvent }
+    
+NeptuneVsAgendaBundle_agenda_add_userevent_piscine:
+    pattern:  /membre/agenda/add/userevent/piscine/{type}
+    defaults: { _controller: NeptuneVsAgendaBundle:Membre:saveEventUserPiscine }
+    requirements:
+        _method:  POST

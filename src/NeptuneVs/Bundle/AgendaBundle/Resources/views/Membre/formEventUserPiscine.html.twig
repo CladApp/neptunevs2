@@ -1,0 +1,24 @@
+<form action="{{ path('NeptuneVsAgendaBundle_agenda_add_userevent_piscine', {'type':type}) }}" method="post" {{ form_enctype(form) }}>
+    <div style="width: 335px;float: left;margin-left: 15px;">
+    {% if form_errors(form) %}
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ form_errors(form) }}
+        </div> 
+    {% endif %}
+        <div class="input-prepend">
+            <span class="add-on">Nom</span><span class="input-large uneditable-input">{{ user.nom }}</span>
+        </div><br />
+        <div class="input-prepend">
+            <span class="add-on">Prénom</span><span class="input-large uneditable-input">{{ user.prenom }}</span>
+        </div><br />
+        <div class="input-prepend">
+            <span class="add-on">{{ form_label(form.niveau) }}</span>
+            {{ form_widget(form.niveau) }}
+        </div><br/>
+        {{ form_rest(form) }}
+    </div>
+    <div style="width: 120px;float: left;margin: 50px 0 0 15px;">
+        <button class="btn btn-success">M'inscrire</button>
+    </div>    
+</form>

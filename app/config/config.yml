@@ -73,19 +73,17 @@ fos_user:
             enabled:    true
             
 parameters:
-    niveau_scaphndre_piscine:
+    niveau_scaphandre_piscine:
         debutant: Débutant
         loisir: Loisir
         apnee: Apnée
+        ecole1: Ecole N1
         ecole2: Ecole N2
         ecole4 : Ecole N4
         ecoleinit : Ecole Init
         ecolemf1 : Ecole MF1
-        encadrant : Encadrant  
-    niveau_apnee_piscine:
-        apnee1 : ApnPs1
-        apneedp : Dp  
-    niveau_scaphndre_carierre:
+        encadrant : Encadrant    
+    niveau_scaphandre_carierre:
         niveau1: Niveau 1
         niveau2 : Niveau 2
         niveau3 : Niveau 3
@@ -95,9 +93,14 @@ parameters:
         mf2 : MF2
         debutant : Débutant
         visiteur: Visiteur
-    niveau_apnee_carierre:
-        apnee1 : ApnCa1
-        apneedp : Dp
+    niveau_apnee:
+        n1 : N1
+        n2 : N2
+        n3 : N3
+        n4 : N4
+        mef1 : MEF1
+        mef2 : MEF2
+        mefi : MEFI
         
 services:
     twig.extension.intl:

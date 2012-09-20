@@ -20,6 +20,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_BIOLOGIE }
+        - { path: ^/membre/, role: ROLE_MEMBRE }
 
     role_hierarchy:
         ROLE_USER: IS_AUTHENTICATED_ANONYMOUSLY

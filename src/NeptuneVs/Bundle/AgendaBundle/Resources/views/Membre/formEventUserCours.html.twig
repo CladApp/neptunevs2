@@ -1,0 +1,18 @@
+<form action="" method="post" {{ form_enctype(form) }}>
+    <div style="width: 290px;margin: 0 auto;">
+    {% if form_errors(form) %}
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ form_errors(form) }}
+        </div> 
+    {% endif %}
+        <div class="input-prepend">
+            <span class="add-on">Nom</span><span class="input-large uneditable-input">{{ user.nom }}</span>
+        </div><br />
+        <div class="input-prepend">
+            <span class="add-on">Prénom</span><span class="input-large uneditable-input">{{ user.prenom }}</span>
+        </div><br />
+        {{ form_rest(form) }}
+        <div style="text-align: center;"><button class="btn btn-success">M'inscrire</button></div>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+<table class="table table-bordered table-condensed">
+    <caption class="badge badge-inverse">Liste des inscrits</caption>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Niveau</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for userevent in event.getUsersevent() if userevent.scaphandre %}                        
+        <tr>
+            <td>userevent.getUser().getNom()</td>
+            <td>userevent.getUser().getPrenom()</td>
+            <td>userevent.niveau</td>
+        </tr>
+    {% else %}
+         <tr>
+             <td colspan="3" style="text-align: center;">Aucun</td>
+        </tr>
+    {% endfor%}
+    </tbody>
+</table>
